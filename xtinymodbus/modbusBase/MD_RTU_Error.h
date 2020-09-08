@@ -1,0 +1,24 @@
+#ifndef _MDM_RTU_ERROR_H__
+#define _MDM_RTU_ERROR_H__
+
+typedef enum {
+    ERR_VOID = 0,
+    ERR_NONE = 1,
+    ERR_IDLE,
+    ERR_QUEUE,
+    ERR_OVER_TIME,
+    ERR_SEND_FIN,
+    ERR_RW_OV_TIME_ERR,
+    ERR_SLAVE_ADDR,
+    ERR_DATA_LEN,
+    ERR_DATA_SAVE,
+    ERR_READ_COIL,
+    ERR_READ_INPUT,
+    ERR_READ_HOLD_REG,
+    ERR_READ_INPUT_REG,
+    ERR_WRITE_COIL,
+    ERR_WRITE_REG,
+    ERR_RW_FIN,
+} MDError;
+
+#endif
