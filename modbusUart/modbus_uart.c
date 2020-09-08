@@ -15,7 +15,6 @@
 #include "modbus_uart.h"
 #include "MDS_RTU_Serial.h"
 #include "MDM_RTU_Serial.h"
-
 static const char *TAG = "modbus_uart";
 
 #define BUF_SIZE (1024)
@@ -27,6 +26,7 @@ static xTaskHandle modbus_uart_task_handle = NULL;
 static void modbus_uart_event_task(void *pvParameters) {
     uart_event_t event;
     uint8_t *dtmp = (uint8_t*) malloc(RD_BUF_SIZE);
+
     for (;;) {
         if (xQueueReceive(uart0_queue, (void*) &event, (portTickType) portMAX_DELAY)) {
             bzero(dtmp, RD_BUF_SIZE);
@@ -41,25 +41,25 @@ static void modbus_uart_event_task(void *pvParameters) {
 #endif
                 break;
             case UART_FIFO_OVF:
-                ESP_LOGI(TAG, "hw fifo overflow");
+                ESP_LOGD(TAG, "hw fifo overflow");
                 uart_flush_input(EX_UART_NUM);
                 xQueueReset(uart0_queue);
                 break;
             case UART_BUFFER_FULL:
-                ESP_LOGI(TAG, "ring buffer full");
+                ESP_LOGD(TAG, "ring buffer full");
                 uart_flush_input(EX_UART_NUM);
                 xQueueReset(uart0_queue);
                 break;
             case UART_PARITY_ERR:
-                ESP_LOGI(TAG, "uart parity error");
+                ESP_LOGD(TAG, "uart parity error");
                 xQueueReset(uart0_queue);
                 break;
             case UART_FRAME_ERR:
-                ESP_LOGI(TAG, "uart frame error");
+                ESP_LOGD(TAG, "uart frame error");
                 xQueueReset(uart0_queue);
                 break;
             default:
-                ESP_LOGI(TAG, "uart event type: %d", event.type);
+                ESP_LOGD(TAG, "uart event type: %d", event.type);
                 xQueueReset(uart0_queue);
                 break;
             }
@@ -67,7 +67,8 @@ static void modbus_uart_event_task(void *pvParameters) {
     }
 
     free(dtmp);
-    dtmp = NULL;
+    hw_timer_disarm();
+    hw_timer_deinit();
     vTaskDelete(NULL);
 }
 
@@ -135,10 +136,6 @@ void modbus_uart_init(uint32_t baud, uint8_t dataBits, uint8_t stopBit, uint8_t 
     hw_timer_init(TimeHandler100US, NULL);
     hw_timer_alarm_us(100, true);
     hw_timer_enable(true);
-
-    //hw_timer_disarm();
-    //hw_timer_deinit();
-
 }
 
 void modbus_uart_send_bytes_by_isr(uint8_t *bytes, uint16_t num) {
