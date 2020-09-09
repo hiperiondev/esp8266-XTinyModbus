@@ -6,27 +6,26 @@
  * @Date: 2020-4-10
  * @Description: Modbus RTU
  * */
-
 /************************************************************/
-#include "MDM_RTU_User_Fun.h"
-#include "MDM_RTU_Fun.h"
-/*********************************************************************/
+
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include "MDM_RTU_User_Fun.h"
+#include "MDM_RTU_Fun.h"
+
 /*******************************************************
  *
- * Function name :MDM_RTU_ReadBits
+ * Function name: MDM_RTU_ReadBits
  * Description
- * Parameter         :
+ * Parameter:
  *        @obj
- *        @modbusAddr
- *        @numOf
- *        @opAddrType (COILS_TYPE,INPUT_TYPE) [AddrType]
- *        @devAddr
- * Return          :
- *        @res
- *        *                 true success , false fail
+ *        @modbusAddr:
+ *        @numOf:
+ *        @opAddrType:
+ *        @devAddr:
+ * Return:
+ *        @res: true success, false fail
  **********************************************************/
 bool MDM_RTU_ReadBits(void *obj, uint16_t modbusAddr, uint16_t numOf, uint8_t *res,
         AddrType opAddrType, uint8_t devAddr) {
@@ -68,18 +67,19 @@ bool MDM_RTU_ReadBits(void *obj, uint16_t modbusAddr, uint16_t numOf, uint8_t *r
     }
     return false;
 }
+
 /*******************************************************
  *
- * Function name :MDM_RTU_ReadRegs
- * Description        :
- * Parameter         :
+ * Function name: MDM_RTU_ReadRegs
+ * Description:
+ * Parameter:
  *        @obj
  *        @modbusAddr
  *        @numOf
- *        @opAddrType    (HOLD_REGS_TYPE,INPUT_REGS_TYPE) [AddrType]
+ *        @opAddrType
  *        @devAddr
- * Return          :
- *        @res    true success , false fail
+ * Return:
+ *        @res: true success, false fail
  **********************************************************/
 bool MDM_RTU_ReadRegs(void *obj, uint16_t modbusAddr, uint16_t numOf, uint16_t *res,
         AddrType opAddrType, uint8_t devAddr) {

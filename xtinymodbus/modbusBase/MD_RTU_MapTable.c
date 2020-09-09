@@ -10,18 +10,17 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
-/*********************************************************************/
 #include "MD_RTU_MapTable.h"
-/*************************************************************************/
 
 /*******************************************************
  *
- * Function name :RegCoilListAdd
- * Description        :
- * Parameter         :
- *        @obj
- *        @pRegCoilItem    [PRegCoilItem]
- * Return          : true success , false fail
+ * Function name: RegCoilListAdd
+ * Description:
+ * Parameter:
+ *        @obj:
+ *        @pMapTableItem:
+ *        @tabSize:
+ * Return: true success, false fail
  **********************************************************/
 uint8_t MapTableAdd(void *obj, PMapTableItem pMapTableItem, uint16_t tabSize) {
     uint16_t i = 0;
@@ -39,12 +38,13 @@ uint8_t MapTableAdd(void *obj, PMapTableItem pMapTableItem, uint16_t tabSize) {
 }
 /*******************************************************
  *
- * Function name :RegCoilListDel
- * Description        :
- * Parameter         :
- *        @obj
- *        @pRegCoilItem   [PRegCoilItem]
- * Return          : true success , false fail
+ * Function name : RegCoilListDel
+ * Description:
+ * Parameter:
+ *        @obj:
+ *        @pMapTableItem:
+ *        @tabSize:
+ * Return: true success, false fail
  **********************************************************/
 uint8_t MapTableDel(void *obj, PMapTableItem pMapTableItem, uint16_t tabSize) {
     uint16_t i = 0;

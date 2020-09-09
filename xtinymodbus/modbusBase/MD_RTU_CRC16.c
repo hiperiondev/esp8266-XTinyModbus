@@ -6,11 +6,9 @@
  * @Description: Modbus RTU CRC16
  * https://github.com/lotoohe-space/XTinyModbus
  ********************************************************************************/
-#include <stdint.h>
 
-/*********************************************************************/
+#include <stdint.h>
 #include "MD_RTU_CRC16.h"
-/*************************************************************************/
 
 /*********************************************************************/
 #if MD_RTU_CRC16_FAST_MODE
@@ -43,12 +41,12 @@ static const uint16_t crc16_table[256] = { 0x0000, 0xC0C1, 0xC181, 0x0140, 0xC30
 
 /*******************************************************
  *
- * Function name :MD_CRC16Update
- * Description        :CRC16
- * Parameter         :
- *        @CRC      CRC160x05B5
- *        @byte
- * Return          :
+ * Function name : MD_CRC16Update
+ * Description:
+ * Parameter:
+ *        @CRC:
+ *        @byte:
+ * Return:
  **********************************************************/
 uint16_t MD_CRC16Update(uint16_t CRC, uint8_t byte) {
 #if MD_RTU_CRC16_FAST_MODE

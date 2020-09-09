@@ -7,16 +7,14 @@
  * @Description: Modbus RTU
  *  https://github.com/lotoohe-space/XTinyModbus
  ********************************************************************************/
-#include <stdint.h>
 
-/*********************************************************************/
+#include <stdint.h>
 #include "MDS_RTU_Serial.h"
 #include "MDS_RTU_Fun.h"
 #include "modbus_uart.h"
-/***************************************************************************/
 
 /********************************************************************/
-PModbusBase pModbusBase;
+PModbusBase pModbusBase = NULL;
 /***************************************************************************/
 
 /*********************************************************************/
@@ -26,15 +24,15 @@ void MDSSerialSWRecv_Send(uint8_t mode);
 
 /*******************************************************
  *
- * Function name :MDSInitSerial
- * Description        :
- * Parameter         :
- *        @obj
- *        @baud
- *        @dataBits
- *        @stopBit
- *        @parity
- * Return          :
+ * Function name: MDSInitSerial
+ * Description:
+ * Parameter:
+ *        @obj:
+ *        @baud:
+ *        @dataBits:
+ *        @stopBit:
+ *        @parity:
+ * Return:
  **********************************************************/
 void MDSInitSerial(void *obj, uint32_t baud, uint8_t dataBits, uint8_t stopBit, uint8_t parity) {
     pModbusBase = obj;
@@ -47,13 +45,14 @@ void MDSInitSerial(void *obj, uint32_t baud, uint8_t dataBits, uint8_t stopBit, 
 
     modbus_uart_init(baud, dataBits, stopBit, parity);
 }
+
 /*******************************************************
  *
- * Function name :MDSSerialRecvByte
- * Description        :
- * Parameter         :
- *        @byte
- * Return          :
+ * Function name: MDSSerialRecvByte
+ * Description:
+ * Parameter:
+ *        @byte:
+ * Return:
  **********************************************************/
 void MDSSerialRecvByte(uint8_t byte) {
     if (pModbusBase == NULL) {
@@ -61,35 +60,38 @@ void MDSSerialRecvByte(uint8_t byte) {
     }
     pModbusBase->mdRTURecByteFunction(pModbusBase, byte);
 }
+
 /*******************************************************
  *
- * Function name :MDSSerialSWRecv_Send
- * Description        :
- * Parameter         :
- *        @mode        TRUE ,FALSE
- * Return          :
+ * Function name: MDSSerialSWRecv_Send
+ * Description:
+ * Parameter:
+ *        @mode:
+ * Return:
  **********************************************************/
 void MDSSerialSWRecv_Send(uint8_t mode) {
 
 }
+
 /*******************************************************
  *
- * Function name :MDSSerialSendBytes
- * Description        :
- * Parameter         :
- *        @bytes
- *        @num
- * Return          :
+ * Function name: MDSSerialSendBytes
+ * Description:
+ * Parameter:
+ *        @bytes:
+ *        @num:
+ * Return:
  **********************************************************/
 void MDSSerialSendBytes(uint8_t *bytes, uint16_t num) {
     modbus_uart_send_bytes_by_isr(bytes, num);
 }
+
 /*******************************************************
  *
- * Function name :MDSTimeHandler100US
- * Description        :100US
- * Parameter         :
- * Return          :
+ * Function name: MDSTimeHandler100US
+ * Description:
+ * Parameter:
+ * Return:
  **********************************************************/
 void MDSTimeHandler100US(void) {
     if (pModbusBase == NULL) {

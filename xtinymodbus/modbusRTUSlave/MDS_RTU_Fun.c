@@ -6,11 +6,10 @@
  * @Date: 2020-4-10
  * @Description: Modbus RTU Slave
  ********************************************************************************/
+
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
-/*********************************************************************/
-
 #include "MDS_RTU_Fun.h"
 #include "MD_RTU_CRC16.h"
 #include "MDS_RTU_Serial.h"
@@ -29,17 +28,17 @@ uint8_t MDS_RTU_WriteDataProcess(PModbusS_RTU pModbus_RTU, uint16_t reg, uint16_
 
 /*******************************************************
  *
- * Function name :MDS_RTU_Init
- * Description        :
- * Parameter         :
- *        @pModbusRTU
- *        @mdRTUSerialInitFun
- *        @salveAddr
- *        @baud
- *        @dataBits
- *        @stopBits
- *        @parity
- * Return          :
+ * Function name: MDS_RTU_Init
+ * Description:
+ * Parameter:
+ *        @pModbusRTU:
+ *        @mdRTUSerialInitFun:
+ *        @salveAddr:
+ *        @baud:
+ *        @dataBits:
+ *        @stopBits:
+ *        @parity:
+ * Return:
  **********************************************************/
 void MDS_RTU_Init(PModbusS_RTU pModbusRTU, MD_RTU_SerialInit mdRTUSerialInitFun, uint8_t salveAddr,
         uint32_t baud, uint8_t dataBits, uint8_t stopBits, uint8_t parity) {
@@ -88,14 +87,15 @@ void MDS_RTU_Init(PModbusS_RTU pModbusRTU, MD_RTU_SerialInit mdRTUSerialInitFun,
     }
     return;
 }
+
 /*******************************************************
  *
- * Function name :MDS_RTU_SetWriteListenFun
- * Description        :
- * Parameter         :
- *        @pModbus_RTU
- *        @wFun
- * Return          :
+ * Function name: MDS_RTU_SetWriteListenFun
+ * Description:
+ * Parameter:
+ *        @pModbus_RTU:
+ *        @wFun:
+ * Return:
  **********************************************************/
 void MDS_RTU_SetWriteListenFun(PModbusS_RTU pModbus_RTU, MDSWriteFunciton wFun) {
     if (pModbus_RTU == NULL) {
@@ -103,13 +103,14 @@ void MDS_RTU_SetWriteListenFun(PModbusS_RTU pModbus_RTU, MDSWriteFunciton wFun) 
     }
     pModbus_RTU->mdsWriteFun = wFun;
 }
+
 /*******************************************************
  *
- * Function name :MDS_RTU_TimeHandler
- * Description        :100US
- * Parameter         :
- *        @obj
- * Return          :
+ * Function name: MDS_RTU_TimeHandler
+ * Description: 100US
+ * Parameter:
+ *        @obj:
+ * Return:
  **********************************************************/
 void MDS_RTU_TimeHandler(void *obj) {
     uint32_t tempTick = 0;
@@ -164,12 +165,12 @@ void MDS_RTU_TimeHandler(void *obj) {
 
 /*******************************************************
  *
- * Function name :MDS_RTU_RecvByte
- * Description        :
- * Parameter         :
- *        @obj
- *        @byte
- * Return          :
+ * Function name: MDS_RTU_RecvByte
+ * Description:
+ * Parameter:
+ *        @obj:
+ *        @byte:
+ * Return:
  **********************************************************/
 void MDS_RTU_RecvByte(void *obj, uint8_t byte) {
     PModbusS_RTU pModbusRTU = obj;
@@ -187,14 +188,15 @@ void MDS_RTU_RecvByte(void *obj, uint8_t byte) {
     /**/
     pModbusRTU->lastTimesTick = pModbusRTU->timesTick;
 }
+
 /*******************************************************
  *
- * Function name :MDS_RTU_AddMapItem
- * Description        :
- * Parameter         :
- *        @obj
- *        @byte
- * Return          :
+ * Function name: MDS_RTU_AddMapItem
+ * Description:
+ * Parameter:
+ *        @obj:
+ *        @byte:
+ * Return:
  **********************************************************/
 bool MDS_RTU_AddMapItem(PModbusS_RTU pModbusRTU, PMapTableItem pMapTableItem) {
     if (pModbusRTU == NULL || pMapTableItem == NULL) {
@@ -202,6 +204,7 @@ bool MDS_RTU_AddMapItem(PModbusS_RTU pModbusRTU, PMapTableItem pMapTableItem) {
     }
     return MapTableAdd(pModbusRTU->pMapTableList, pMapTableItem, MDS_REG_COIL_ITEM_NUM);
 }
+
 #if    !MDS_USE_SEND_CACHE
 /*******************************************************
 *
@@ -217,13 +220,14 @@ static void MDS_RTU_SendByte(PModbusS_RTU pModbusRTU,uint8 byte){
     TO_MDBase(pModbusRTU)->mdRTUSendBytesFunction(&byte,1);
 }
 #endif
+
 /*******************************************************
  *
- * Function name :MDS_RTU_SerialProcess
- * Description        :
- * Parameter         :
- *        @pModbus_RTU
- * Return          :
+ * Function name: MDS_RTU_SerialProcess
+ * Description:
+ * Parameter:
+ *        @pModbus_RTU:
+ * Return:
  **********************************************************/
 static bool MDS_RTU_SerialProcess(PModbusS_RTU pModbus_RTU) {
     uint8_t byte;
@@ -276,13 +280,14 @@ static bool MDS_RTU_SerialProcess(PModbusS_RTU pModbus_RTU) {
 
     return false;
 }
+
 /*******************************************************
  *
- * Function name :MDS_RTU_Process
- * Description        :
- * Parameter         :
- *        @pModbus_RTU
- * Return          :
+ * Function name: MDS_RTU_Process
+ * Description:
+ * Parameter:
+ *        @pModbus_RTU:
+ * Return:
  **********************************************************/
 void MDS_RTU_Process(PModbusS_RTU pModbus_RTU) {
     bool res;
@@ -358,13 +363,13 @@ void MDS_RTU_Process(PModbusS_RTU pModbus_RTU) {
 
 /*******************************************************
  *
- * Function name :MDS_RTU_SendErrorCode
- * Description        :
- * Parameter         :
- *        @pModbus_RTU
- *        @anlCode [ANLCode]
- *        @errCode [ErrorCode]
- * Return          :
+ * Function name: MDS_RTU_SendErrorCode
+ * Description:
+ * Parameter:
+ *        @pModbus_RTU:
+ *        @anlCode:
+ *        @errCode:
+ * Return:
  **********************************************************/
 static void MDS_RTU_SendErrorCode(PModbusS_RTU pModbus_RTU, ANLCode anlCode, ErrorCode errCode) {
     MD_RTU_SEND_MODE(pModbus_RTU);
@@ -375,16 +380,17 @@ static void MDS_RTU_SendErrorCode(PModbusS_RTU pModbus_RTU, ANLCode anlCode, Err
     MDS_SEND_END(pModbus_RTU);
     MD_RTU_RECV_MODE(pModbus_RTU);
 }
+
 /*******************************************************
  *
- * Function name :MDS_RTU_ReadDataProcess
- * Description        :
- * Parameter         :
- *        @pModbus_RTU
- *        @reg
- *        @regNum
- *        @funCode
- * Return          : true success , false fail
+ * Function name: MDS_RTU_ReadDataProcess
+ * Description:
+ * Parameter:
+ *        @pModbus_RTU:
+ *        @reg:
+ *        @regNum:
+ *        @funCode:
+ * Return: true success , false fail
  **********************************************************/
 uint8_t MDS_RTU_ReadDataProcess(PModbusS_RTU pModbus_RTU, uint16_t reg, uint16_t regNum,
         uint8_t funCode) {
@@ -463,18 +469,19 @@ uint8_t MDS_RTU_ReadDataProcess(PModbusS_RTU pModbus_RTU, uint16_t reg, uint16_t
     MDS_RTU_SendErrorCode(pModbus_RTU, (ANLCode) (0x80 + funCode), ILLEGAL_DAT_ADDR);
     return false;
 }
+
 /*******************************************************
  *
- * Function name :MDS_RTU_WriteDataProcess
- * Description        :
- * Parameter         :
- *        @pModbus_RTU
- *        @reg
- *        @regNum
- *        @funCode
- *        @data
- *        @byteCount
- * Return          : true success , false fail
+ * Function name: MDS_RTU_WriteDataProcess
+ * Description:
+ * Parameter:
+ *        @pModbus_RTU:
+ *        @reg:
+ *        @regNum:
+ *        @funCode:
+ *        @data:
+ *        @byteCount:
+ * Return: true success, false fail
  **********************************************************/
 uint8_t MDS_RTU_WriteDataProcess(PModbusS_RTU pModbus_RTU, uint16_t reg, uint16_t regNum,
         uint8_t funCode, uint16_t *data, uint8_t byteCount) {

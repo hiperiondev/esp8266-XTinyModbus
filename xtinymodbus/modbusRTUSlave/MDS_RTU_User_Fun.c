@@ -7,8 +7,8 @@
  * @Description: Modbus RTU
  * https://github.com/lotoohe-space/XTinyModbus
  ********************************************************************************/
-#include <stdbool.h>
 
+#include <stdbool.h>
 #include "MDS_RTU_User_Fun.h"
 #include "MDS_RTU_Fun.h"
 
@@ -50,6 +50,7 @@ bool MDS_RTU_ReadBits(void *obj, uint16_t modbusAddr, uint16_t numOf, uint8_t *r
     }
     return false;
 }
+
 bool MDS_RTU_ReadRegs(void *obj, uint16_t modbusAddr, uint16_t numOf, uint16_t *res,
         AddrType opAddrType) {
     uint16_t i;
@@ -83,6 +84,7 @@ bool MDS_RTU_ReadRegs(void *obj, uint16_t modbusAddr, uint16_t numOf, uint16_t *
     }
     return false;
 }
+
 bool MDS_RTU_WriteBit(void *obj, uint16_t modbusAddr, uint8_t bit, AddrType opAddrType) {
     uint16_t i;
     PModbusS_RTU pModbusS_RTU = obj;
@@ -118,6 +120,7 @@ bool MDS_RTU_WriteBit(void *obj, uint16_t modbusAddr, uint8_t bit, AddrType opAd
     }
     return false;
 }
+
 bool MDS_RTU_WriteBits(void *obj, uint16_t modbusAddr, uint16_t numOf, uint16_t *bit,
         AddrType opAddrType) {
     uint16_t i;
@@ -158,6 +161,7 @@ bool MDS_RTU_WriteBits(void *obj, uint16_t modbusAddr, uint16_t numOf, uint16_t 
     }
     return false;
 }
+
 bool MDS_RTU_WriteReg(void *obj, uint16_t modbusAddr, uint16_t reg, AddrType opAddrType) {
     uint16_t i;
     PModbusS_RTU pModbusS_RTU = obj;
@@ -185,6 +189,7 @@ bool MDS_RTU_WriteReg(void *obj, uint16_t modbusAddr, uint16_t reg, AddrType opA
     }
     return false;
 }
+
 bool MDS_RTU_WriteRegs(void *obj, uint16_t modbusAddr, uint16_t numOf, uint16_t *reg,
         uint8_t isBigE, AddrType opAddrType) {
     uint16_t i;
