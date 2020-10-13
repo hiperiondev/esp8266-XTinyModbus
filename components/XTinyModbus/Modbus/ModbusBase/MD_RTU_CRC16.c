@@ -52,7 +52,6 @@ static const uint16 crc16_table[256]=
 /*********************************END******************************************/
 
 /*******************************************************
- *
  * Function name: MD_CRC16Update
  * Description: This function needs to get the value of CRC16 through cumulative calculation
  * Parameter:

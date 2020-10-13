@@ -1,5 +1,5 @@
 /********************************************************************************
- * @File name: MD_RTU_User_Fun.c
+ * @File name: MDM_RTU_User_Fun.c
  * @Author: zspace
  * @Email: 1358745329@qq.com
  * @Version: 1.0
@@ -14,7 +14,6 @@
 /*********************************END******************************************/
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadBits
  * Description: Read discretely mapped bits, you can read one or multiple
  * Parameter:
@@ -65,7 +64,6 @@ BOOL MDM_RTU_ReadBits(void *obj, uint16 modbusAddr, uint16 numOf, uint8 *res, Ad
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadRegs
  * Description: Read discretely mapped registers, you can read one or multiple
  * Parameter:

@@ -1,5 +1,5 @@
 /********************************************************************************
- * @File name: MD_RTU_User_Fun.c
+ * @File name: MDS_RTU_User_Fun.c
  * @Author: zspace
  * @Email: 1358745329@qq.com
  * @Version: 1.0
@@ -12,7 +12,6 @@
 #include "MDS_RTU_Fun.h"
 
 /*******************************************************
- *
  * Function name: MDS_RTU_ReadBits
  * Description: Read bits, you can read one or multiple
  * Parameter:
@@ -55,7 +54,6 @@ BOOL MDS_RTU_ReadBits(void *obj, uint16 modbusAddr, uint16 numOf, uint8 *res, Ad
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_ReadRegs
  * Description: ????
  * Parameter:
@@ -94,7 +92,6 @@ BOOL MDS_RTU_ReadRegs(void *obj, uint16 modbusAddr, uint16 numOf, uint16 *res, A
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteBit
  * Description: ????
  * Parameter:
@@ -135,7 +132,6 @@ BOOL MDS_RTU_WriteBit(void *obj, uint16 modbusAddr, uint8 bit, AddrType opAddrTy
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteBits
  * Description: ????
  * Parameter:
@@ -180,7 +176,6 @@ BOOL MDS_RTU_WriteBits(void *obj, uint16 modbusAddr, uint16 numOf, uint16 *bit, 
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteReg
  * Description: ????
  * Parameter:
@@ -215,7 +210,6 @@ BOOL MDS_RTU_WriteReg(void *obj, uint16 modbusAddr, uint16 reg, AddrType opAddrT
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteRegs
  * Description: ????
  * Parameter:
@@ -254,7 +248,6 @@ BOOL MDS_RTU_WriteRegs(void *obj, uint16 modbusAddr, uint16 numOf, uint16 *reg, 
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteCoil
  * Description: ????
  * Parameter:
@@ -266,7 +259,6 @@ BOOL MDS_RTU_WriteCoil(void *obj, uint16 modbusAddr, uint8 bit) {
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteInput
  * Description: ????
  * Parameter:
@@ -278,7 +270,6 @@ BOOL MDS_RTU_WriteInput(void *obj, uint16 modbusAddr, uint8 bit) {
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteCoils
  * Description: ????
  * Parameter:
@@ -290,7 +281,6 @@ BOOL MDS_RTU_WriteCoils(void *obj, uint16 modbusAddr, uint16 numOf, uint16 *bit)
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteInputs
  * Description: ????
  * Parameter:
@@ -302,7 +292,6 @@ BOOL MDS_RTU_WriteInputs(void *obj, uint16 modbusAddr, uint16 numOf, uint16 *bit
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteHoldReg
  * Description: ????
  * Parameter:
@@ -315,7 +304,6 @@ BOOL MDS_RTU_WriteHoldReg(void *obj, uint16 modbusAddr, uint16 reg) {
 
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteHoldRegs
  * Description: ????
  * Parameter:
@@ -327,7 +315,6 @@ BOOL MDS_RTU_WriteHoldRegs(void *obj, uint16 modbusAddr, uint16 numOf, uint16 *r
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteInputReg
  * Description: ????
  * Parameter:
@@ -339,7 +326,6 @@ BOOL MDS_RTU_WriteInputReg(void *obj, uint16 modbusAddr, uint16 reg) {
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteInputRegs
  * Description: ????
  * Parameter:
@@ -351,7 +337,6 @@ BOOL MDS_RTU_WriteInputRegs(void *obj, uint16 modbusAddr, uint16 numOf, uint16 *
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_ReadCoils
  * Description: ????
  * Parameter:
@@ -363,7 +348,6 @@ BOOL MDS_RTU_ReadCoils(void *obj, uint16 modbusAddr, uint16 numOf, uint8 *res) {
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_ReadInput
  * Description: ????
  * Parameter:
@@ -375,7 +359,6 @@ BOOL MDS_RTU_ReadInput(void *obj, uint16 modbusAddr, uint16 numOf, uint8 *res) {
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_ReadHoldRegs
  * Description: ????
  * Parameter:
@@ -387,7 +370,6 @@ BOOL MDS_RTU_ReadHoldRegs(void *obj, uint16 modbusAddr, uint16 numOf, uint16 *re
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_ReadInputRegs
  * Description: ????
  * Parameter:

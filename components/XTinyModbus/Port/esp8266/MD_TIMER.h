@@ -8,6 +8,6 @@
 #ifndef _MD_TIMER_H_
 #define _MD_TIMER_H_
 
-void md_timer_init(void (* _MDTimeHandler100US)(void *arg));
+void md_timer_init(uint32_t uS, void (* _TimeHandler)(void *arg), bool reload);
 
 #endif

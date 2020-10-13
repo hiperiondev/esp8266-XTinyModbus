@@ -23,7 +23,6 @@ void MDM_RTU_RecvByte(void *obj, uint8 byte);
 /*********************************END******************************************/
 
 /*******************************************************
- *
  * Function name :MDM_RTU_Init
  * Description: Modbus RTU Host initialization
  * Parameter:
@@ -81,7 +80,6 @@ MDError MDM_RTU_Init(PModbus_RTU pModbusRTU, MD_RTU_SerialInit mdRTUSerialInitFu
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_CB_Init
  * Description: Modbus RTU host sends the control block initialization,
  *     the control block mainly contains information maintenance
@@ -109,7 +107,6 @@ void MDM_RTU_CB_Init(PModbus_RTU_CB pModbusRTUCB, PModbus_RTU pModbusRTU, uint32
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_CB_OverTimeReset
  * Description: Send control block timeout reset
  * Parameter:
@@ -125,12 +122,11 @@ void MDM_RTU_CB_OverTimeReset(PModbus_RTU_CB pModbusRTUCB) {
 }
 
 /*******************************************************
- *
  * Function name :MDM_RTU_CB_ClrDisFlag
  * Description: Clear disconnection signs
  * Parameter:
  *         @pModbusRTUCB    Send control block object pointer
- * Return: ��
+ * Return: None
  **********************************************************/
 void MDM_RTU_CB_ClrDisFlag(PModbus_RTU_CB pModbusRTUCB) {
     if (pModbusRTUCB == NULL) {
@@ -140,7 +136,6 @@ void MDM_RTU_CB_ClrDisFlag(PModbus_RTU_CB pModbusRTUCB) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_CB_SetDisPollEnFlag
  * Description: Set the offline polling enable flag bit.
  * Parameter:
@@ -160,7 +155,6 @@ void MDM_RTU_CB_SetDisPollEnFlag(PModbus_RTU_CB pModbusRTUCB, BOOL state) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_TimeHandler
  * Description: Timing processing function, timing unit 100US
  * Parameter:
@@ -191,7 +185,6 @@ void MDM_RTU_TimeHandler(void *obj) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_RecvByte
  * Description: This function receives data and puts it in the queue
  * Parameter:
@@ -217,13 +210,12 @@ void MDM_RTU_RecvByte(void *obj, uint8 byte) {
 
 #if !MDM_USE_SEND_CACHE
 /*******************************************************
- *
  * Function name: MDM_RTU_SendByte
- * Description: ����һ���ֽ�
+ * Description: Send one byte
  * Parameter:
- *        @pModbus_RTU    ��������ָ��
- *        @byte           ���͵�һ���ֽ�
- * Return: ��
+ *        @pModbus_RTU    Host structure pointer
+ *        @byte           Data
+ * Return: None
  **********************************************************/
 static void MDM_RTU_SendByte(PModbus_RTU pModbus_RTU,uint8 byte) {
     if(!pModbus_RTU) {return;}
@@ -232,7 +224,6 @@ static void MDM_RTU_SendByte(PModbus_RTU pModbus_RTU,uint8 byte) {
 #endif
 
 /*******************************************************
- *
  * Function name: MDM_RTU_AddMapItem
  * Description: This function adds a mapping record to the discrete mapping table
  * Parameter:
@@ -248,7 +239,6 @@ BOOL MDM_RTU_AddMapItem(PModbus_RTU pModbusRTU, PMapTableItem pMapTableItem) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadByte
  * Description: Get data from the receiving queue
  * Parameter:
@@ -271,7 +261,6 @@ MDError MDM_RTU_ReadByte(PModbus_RTU pModbusRTU, uint8 *res, uint8 len) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadUint16
  * Description: Get data from the receiving queue
  * Parameter:
@@ -300,7 +289,6 @@ MDError MDM_RTU_ReadUint16(PModbus_RTU pModbusRTU, uint16 *res, uint8 len) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadFun
  * Description: This function sends commands related to the read function
  * Parameter:
@@ -325,7 +313,6 @@ static void MDM_RTU_ReadFun(PModbus_RTU pModbus_RTU, uint8 funCode, uint8 slaveA
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_WriteSingleFun
  * Description: Write single coil and register function
  * Parameter:
@@ -351,7 +338,6 @@ static void MDM_RTU_WriteSingleFun(PModbus_RTU pModbus_RTU, uint8 funCode, uint8
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_WriteFun
  * Description: Write multiple coils and multiple registers
  * Parameter:
@@ -397,7 +383,6 @@ static void MDM_RTU_WriteFun(PModbus_RTU pModbus_RTU, uint8 funCode, uint8 slave
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_InsideWriteBits
  * Description: Write bits to the discrete map
  * Parameter:
@@ -450,7 +435,6 @@ BOOL MDM_RTU_InsideWriteBits(void *obj, uint16 modbusAddr, uint16 numOf, uint8 *
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_InsideWriteRegs
  * Description: Write discrete register
  * Parameter:
@@ -500,7 +484,6 @@ BOOL MDM_RTU_InsideWriteRegs(void *obj, uint16 modbusAddr, uint16 numOf, uint16 
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_NB_RW
  * Description: Non-blocking read and write
  * Parameter:
@@ -751,7 +734,7 @@ MDError MDM_RTU_NB_RW(PModbus_RTU_CB pModbus_RTU_CB, ModbusFunCode funCode, uint
                 errRes = ERR_NONE;
                 goto _exit;
             }
-        } else if (pModbus_RTU_CB->sendFlag == 1 || pModbus_RTU_CB->sendFlag == 3) { // �Ѿ������ˣ����ǻ�û�յ���������ִ�г�ʱ���
+        } else if (pModbus_RTU_CB->sendFlag == 1 || pModbus_RTU_CB->sendFlag == 3) { // Has been sent, but has not received feedback, then perform timeout detection
             // Receive timeout detection
             if (pModbus_RTU_CB->pModbus_RTU->timesTick - pModbus_RTU_CB->sendTimeTick >= pModbus_RTU_CB->sendOverTime) {
                 // Set the start point of timeout
@@ -797,7 +780,6 @@ MDError MDM_RTU_NB_RW(PModbus_RTU_CB pModbus_RTU_CB, ModbusFunCode funCode, uint
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_RW
  * Description: Blocking read and write
  * Parameter:
@@ -830,7 +812,6 @@ MDError MDM_RTU_RW(PModbus_RTU_CB pModbus_RTU_CB, ModbusFunCode funCode, uint8 s
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadCoil
  * Description: Read coil
  * Parameter:
@@ -845,7 +826,6 @@ MDError MDM_RTU_ReadCoil(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, uint16 
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadInput
  * Description: Read input
  * Parameter         :
@@ -860,7 +840,6 @@ MDError MDM_RTU_ReadInput(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, uint16
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadHoldReg
  * Description: Read holding register
  * Parameter:
@@ -875,7 +854,6 @@ MDError MDM_RTU_ReadHoldReg(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, uint
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadInputReg
  * Description: Read input register
  * Parameter         :
@@ -890,7 +868,6 @@ MDError MDM_RTU_ReadInputReg(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, uin
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_WriteSingleCoil
  * Description: Write a single coil
  * Parameter:
@@ -907,7 +884,6 @@ MDError MDM_RTU_WriteSingleCoil(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, 
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_WriteSingleReg
  * Description: Write a single register
  * Parameter:
@@ -922,7 +898,6 @@ MDError MDM_RTU_WriteSingleReg(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, u
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_WriteCoils
  * Description: Write coil
  * Parameter:
@@ -938,7 +913,6 @@ MDError MDM_RTU_WriteCoils(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, uint1
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_WriteRegs
  * Description: Write register
  * Parameter:
@@ -954,7 +928,6 @@ MDError MDM_RTU_WriteRegs(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, uint16
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadCoil
  * Description: Non-blocking read coil
  * Parameter:
@@ -969,7 +942,6 @@ MDError MDM_RTU_NB_ReadCoil(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, uint
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadInput
  * Description: Non-blocking read input
  * Parameter:
@@ -984,7 +956,6 @@ MDError MDM_RTU_NB_ReadInput(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, uin
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadHoldReg
  * Description: Non-blocking read holding register
  * Parameter:
@@ -999,7 +970,6 @@ MDError MDM_RTU_NB_ReadHoldReg(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, u
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_ReadHoldReg
  * Description: Non-blocking read input register
  * Parameter:
@@ -1014,7 +984,6 @@ MDError MDM_RTU_NB_ReadInputReg(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, 
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_WriteSingleCoil
  * Description: Non-blocking write single coil
  * Parameter:
@@ -1031,7 +1000,6 @@ MDError MDM_RTU_NB_WriteSingleCoil(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAdd
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_WriteSingleReg
  * Description: Non-blocking write to a single register
  * Parameter:
@@ -1046,7 +1014,6 @@ MDError MDM_RTU_NB_WriteSingleReg(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_WriteCoils
  * Description: Non-blocking write coil
  * Parameter:
@@ -1063,7 +1030,6 @@ MDError MDM_RTU_NB_WriteCoils(PModbus_RTU_CB pModbus_RTU_CB, uint8 slaveAddr, ui
 }
 
 /*******************************************************
- *
  * Function name: MDM_RTU_WriteRegs
  * Description: Non-blocking write register
  * Parameter:

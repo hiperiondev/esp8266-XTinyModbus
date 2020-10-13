@@ -1,5 +1,5 @@
 /********************************************************************************
- * @File name: MD_RTU_RW_Man.h
+ * @File name: MDM_RTU_RW_Man.h
  * @Author: zspace
  * @Email: 1358745329@qq.com
  * @Version: 1.0

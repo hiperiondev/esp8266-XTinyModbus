@@ -6,8 +6,8 @@
  * @Date: 2020-4-10
  * @Description: Modbus RTU Queue function module
  ********************************************************************************/
-#ifndef _SQQUEUE_H__
-#define _SQQUEUE_H__
+#ifndef _MD_RTU_QUEUE_H__
+#define _MD_RTU_QUEUE_H__
 
 /*********************************HEAD FILE************************************/
 #include "MD_RTU_Type.h"

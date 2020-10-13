@@ -5,7 +5,7 @@
 
 #include "MD_RTU_Tool.h"
 #include "MDS_RTU_Serial.h"
-static PModbusBase pModbusBase = NULL;
+//static PModbusBase pModbusBase = NULL;
 
 /*******************************************************
  *

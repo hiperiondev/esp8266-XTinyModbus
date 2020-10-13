@@ -1,5 +1,5 @@
 /********************************************************************************
- * @File name: MD_RTU_RW_Man.c
+ * @File name: MDM_RTU_RW_Man.c
  * @Author: zspace
  * @Email: 1358745329@qq.com
  * @Version: 1.0
@@ -14,7 +14,6 @@
 MDM_RW_Ctrl MDM_RW_CtrlList[MDM_RW_CTRL_LIST_SIZE] = { 0 };
 
 /*******************************************************
- *
  * Function name: MDM_RW_CtrlNew
  * Description: ????
  * Parameter:
@@ -33,7 +32,6 @@ static PMDM_RW_Ctrl MDM_RW_CtrlNew(void) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RW_CtrlFindByFunAddr
  * Description: ????
  * Parameter:
@@ -53,7 +51,6 @@ static PMDM_RW_Ctrl MDM_RW_CtrlFindByFunAddr(MDMSendReadCallBack cbFun) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RW_CtrlDelRW
  * Description: Delete a RW interface
  * Parameter:
@@ -71,7 +68,6 @@ void MDM_RW_CtrlDelRW(PMDM_RW_Ctrl pMDM_RW_Ctrl) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RW_CtrlAddRW
  * Description: Add a read-write
  * Parameter:
@@ -90,7 +86,6 @@ PMDM_RW_Ctrl MDM_RW_CtrlAddRW(MDMSendReadCallBack cbFun, void *arg, const char *
 }
 
 /*******************************************************
- *
  * Function name: MDM_RW_CtrlSetRWOnceFlag
  * Description: Set whether to send once or cyclically
  * Parameter:
@@ -109,7 +104,6 @@ void MDM_RW_CtrlSetRWOnceFlag(PMDM_RW_Ctrl pMDM_RW_Ctrl, BOOL flag) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RW_CtrlResetRetranFlag
  * Description: Reset slave offline flag
  * Parameter:
@@ -124,7 +118,6 @@ void MDM_RW_CtrlResetRetranFlag(PMDM_RW_Ctrl pMDM_RW_Ctrl) {
 }
 
 /*******************************************************
- *
  * Function name: MDM_RW_CtrlLoop
  * Description: This function cyclically processes the host bare-metal transceiver control function
  * Parameter:

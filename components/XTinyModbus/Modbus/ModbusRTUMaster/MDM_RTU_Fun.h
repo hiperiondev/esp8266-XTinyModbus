@@ -1,5 +1,5 @@
 /********************************************************************************
- * @File name: MD_RTU_Fun.h
+ * @File name: MDM_RTU_Fun.h
  * @Author: zspace
  * @Email: 1358745329@qq.com
  * @Version: 1.0
@@ -7,8 +7,8 @@
  * @Description: Modbus RTU Host function module
  ********************************************************************************/
 
-#ifndef _MEM_RTU_FUN_H__
-#define _MEM_RTU_FUN_H__
+#ifndef _MDM_RTU_FUN_H__
+#define _MDM_RTU_FUN_H__
 /*********************************HEAD FILE************************************/
 #include "MD_RTU_Queue.h"
 #include "MD_RTU_Type.h"

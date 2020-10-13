@@ -7,8 +7,8 @@
  * @Description: ????
  ********************************************************************************/
 
-#ifndef _MDM_RTU_ERROR_H__
-#define _MDM_RTU_ERROR_H__
+#ifndef _MD_RTU_ERROR_H__
+#define _MD_RTU_ERROR_H__
 
 typedef enum {
     ERR_VOID = 0,       // Null pointer error

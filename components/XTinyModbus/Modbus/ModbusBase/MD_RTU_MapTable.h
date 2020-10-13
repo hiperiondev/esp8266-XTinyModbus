@@ -1,20 +1,20 @@
 /********************************************************************************
- * @File name: MD_RTU_RegCoil.h
+ * @File name: MD_RTU_MapTable.h
  * @Author: zspace
  * @Email: 1358745329@qq.com
  * @Version: 1.0
  * @Date: 2020-4-10
  * @Description: Modbus RTU Discrete mapping management module
  ********************************************************************************/
-#ifndef _MD_RTU_REGCOIL_H__
-#define _MD_RTU_REGCOIL_H__
+#ifndef _MD_RTU_MAPTABLE_H__
+#define _MD_RTU_MAPTABLE_H__
 /*********************************HEAD FILE************************************/
 #include "MD_RTU_Type.h"
 /*********************************END******************************************/
 
 /*********************************CUSTOM DATA TYPE************************************/
 typedef enum {
-    /*����*/
+    // ????
     COILS_TYPE      = 1,
     INPUT_TYPE      = 2,
     HOLD_REGS_TYPE  = 3,

@@ -6,8 +6,8 @@
  * @Description: Modbus RTU serial port related modules
  ********************************************************************************/
 
-#ifndef _MD_RTU_SERIAL_H__
-#define _MD_RTU_SERIAL_H__
+#ifndef _MDS_RTU_SERIAL_H__
+#define _MDS_RTU_SERIAL_H__
 
 /*********************************HEAD FILE************************************/
 #include "MD_RTU_Type.h"

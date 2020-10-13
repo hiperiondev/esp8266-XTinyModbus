@@ -1,5 +1,5 @@
 /********************************************************************************
- * @File name: MD_RTU_Fun.c
+ * @File name: MDS_RTU_Fun.c
  * @Author: zspace
  * @Email: 1358745329@qq.com
  * @Version: 1.0
@@ -25,7 +25,6 @@ uint8 MDS_RTU_WriteDataProcess(PModbusS_RTU pModbus_RTU, uint16 reg, uint16 regN
 /*********************************END******************************************/
 
 /*******************************************************
- *
  * Function name: MDS_RTU_Init
  * Description: Initialize a slave
  * Parameter:
@@ -47,7 +46,7 @@ void MDS_RTU_Init(PModbusS_RTU pModbusRTU, MD_RTU_SerialInit mdRTUSerialInitFun,
     }
     MDInitQueue(&(pModbusRTU->mdSqQueue));
     MDInitQueue(&(pModbusRTU->mdMsgSqQueue));
-    pModbusRTU->salveAddr = salveAddr;
+    pModbusRTU->slaveAddr = salveAddr;
     pModbusRTU->serialReadCount = 0;
 #if MDS_USE_SEND_CACHE
     pModbusRTU->serialSendCount = 0;
@@ -87,7 +86,6 @@ void MDS_RTU_Init(PModbusS_RTU pModbusRTU, MD_RTU_SerialInit mdRTUSerialInitFun,
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_SetWriteListenFun
  * Description: This function can set a callback function, when the master writes the slave address, the set function will be called.
  * Parameter:
@@ -103,7 +101,6 @@ void MDS_RTU_SetWriteListenFun(PModbusS_RTU pModbus_RTU, MDSWriteFunciton wFun) 
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_TimeHandler
  * Description: This function needs to be called in the timer interrupt, the interrupt interval time is 100US.
  * Parameter:
@@ -130,7 +127,7 @@ void MDS_RTU_TimeHandler(void *obj) {
     if (pModbusRTU->lastTimesTick == 0xFFFFFFFF) {
         return;
     }// Has started receiving packets
-    if (overFlag) { // ʱ�����
+    if (overFlag) { // ????
         pModbusRTU->timesTick += 0xFFFFFFFF - pModbusRTU->lastTimesTick; // Time offset when sending
         pModbusRTU->lastTimesTick = tempTick;
     }
@@ -162,7 +159,6 @@ void MDS_RTU_TimeHandler(void *obj) {
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_RecvByte
  * Description: This function is called in the serial port interrupt, when a byte is received, this function is called
  * Parameter:
@@ -188,7 +184,6 @@ void MDS_RTU_RecvByte(void *obj, uint8 byte) {
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_AddMapItem
  * Description: This function adds a mapping record to the discrete mapping table.
  * Parameter:
@@ -205,7 +200,6 @@ BOOL MDS_RTU_AddMapItem(PModbusS_RTU pModbusRTU, PMapTableItem pMapTableItem) {
 
 #if    !MDS_USE_SEND_CACHE
 /*******************************************************
-*
 * Function name: MDS_RTU_SendByte
 * Description: Slave sends a byte
 * Parameter:
@@ -220,7 +214,6 @@ static void MDS_RTU_SendByte(PModbusS_RTU pModbusRTU,uint8 byte){
 #endif
 
 /*******************************************************
- *
  * Function name: MDS_RTU_SerialProcess
  * Description: This function is called internally to get a packet data received.
  * Parameter:
@@ -280,7 +273,6 @@ static BOOL MDS_RTU_SerialProcess(PModbusS_RTU pModbus_RTU) {
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_Process
  * Description: This function processes the received packet data
  * Parameter:
@@ -304,7 +296,7 @@ void MDS_RTU_Process(PModbusS_RTU pModbus_RTU) {
     }
 
     if (pModbus_RTU->serialReadCache[0] != 0x00 // Broadcast address
-    && pModbus_RTU->serialReadCache[0] != pModbus_RTU->salveAddr) {
+    && pModbus_RTU->serialReadCache[0] != pModbus_RTU->slaveAddr) {
         // Not belong to this slave, discard
         goto __exit;
     }
@@ -360,7 +352,6 @@ void MDS_RTU_Process(PModbusS_RTU pModbus_RTU) {
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_SendErrorCode
  * Description: This function returns the error code information received and processed to the host
  * Parameter:
@@ -372,7 +363,7 @@ void MDS_RTU_Process(PModbusS_RTU pModbus_RTU) {
 static void MDS_RTU_SendErrorCode(PModbusS_RTU pModbus_RTU, ANLCode anlCode, ErrorCode errCode) {
     MD_RTU_SEND_MODE(pModbus_RTU);
     MDS_START_SEND(pModbus_RTU);
-    MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->salveAddr);
+    MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->slaveAddr);
     MDS_SEND_BYTE(pModbus_RTU, anlCode);
     MDS_SEND_BYTE(pModbus_RTU, errCode);
     MDS_SEND_END(pModbus_RTU);
@@ -380,7 +371,6 @@ static void MDS_RTU_SendErrorCode(PModbusS_RTU pModbus_RTU, ANLCode anlCode, Err
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_ReadDataProcess
  * Description:This function handles the host's read data request
  * Parameter:
@@ -414,7 +404,7 @@ uint8 MDS_RTU_ReadDataProcess(PModbusS_RTU pModbus_RTU, uint16 reg, uint16 regNu
                 uint8 tempByte = 0;
                 MD_RTU_SEND_MODE(pModbus_RTU);
                 MDS_START_SEND(pModbus_RTU);
-                MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->salveAddr);
+                MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->slaveAddr);
                 MDS_SEND_BYTE(pModbus_RTU, funCode);
                 MDS_SEND_BYTE(pModbus_RTU, (regNum >> 3) + ((regNum % 8) > 0 ? 1 : 0));
                 for (j = offsetAddr; j < offsetAddr + regNum; j++) {
@@ -441,7 +431,7 @@ uint8 MDS_RTU_ReadDataProcess(PModbusS_RTU pModbus_RTU, uint16 reg, uint16 regNu
                 uint16 offsetAddr = reg - MDS_RTU_REG_COIL_ITEM_ADDR(pModbus_RTU->pMapTableList[i]);
                 MD_RTU_SEND_MODE(pModbus_RTU);
                 MDS_START_SEND(pModbus_RTU);
-                MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->salveAddr);
+                MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->slaveAddr);
                 MDS_SEND_BYTE(pModbus_RTU, funCode);
                 MDS_SEND_BYTE(pModbus_RTU, regNum << 1);
                 for (j = 0; j < regNum << 1; j += 2) {
@@ -464,7 +454,6 @@ uint8 MDS_RTU_ReadDataProcess(PModbusS_RTU pModbus_RTU, uint16 reg, uint16 regNu
 }
 
 /*******************************************************
- *
  * Function name: MDS_RTU_WriteDataProcess
  * Description: This function handles the host's write data request
  * Parameter:
@@ -491,7 +480,7 @@ uint8 MDS_RTU_WriteDataProcess(PModbusS_RTU pModbus_RTU, uint16 reg, uint16 regN
             if (res) {
                 MD_RTU_SEND_MODE(pModbus_RTU);
                 MDS_START_SEND(pModbus_RTU);
-                MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->salveAddr);
+                MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->slaveAddr);
                 MDS_SEND_BYTE(pModbus_RTU, funCode);
                 MDS_SEND_BYTE(pModbus_RTU, (reg >> 8) & 0xff);
                 MDS_SEND_BYTE(pModbus_RTU, (reg) & 0xff);
@@ -515,7 +504,7 @@ uint8 MDS_RTU_WriteDataProcess(PModbusS_RTU pModbus_RTU, uint16 reg, uint16 regN
         if (res) {
             MD_RTU_SEND_MODE(pModbus_RTU);
             MDS_START_SEND(pModbus_RTU);
-            MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->salveAddr);
+            MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->slaveAddr);
             MDS_SEND_BYTE(pModbus_RTU, funCode);
             MDS_SEND_BYTE(pModbus_RTU, (reg >> 8) & 0xff);
             MDS_SEND_BYTE(pModbus_RTU, (reg) & 0xff);
@@ -535,7 +524,7 @@ uint8 MDS_RTU_WriteDataProcess(PModbusS_RTU pModbus_RTU, uint16 reg, uint16 regN
         if (res) {
             MD_RTU_SEND_MODE(pModbus_RTU);
             MDS_START_SEND(pModbus_RTU);
-            MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->salveAddr);
+            MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->slaveAddr);
             MDS_SEND_BYTE(pModbus_RTU, funCode);
             MDS_SEND_BYTE(pModbus_RTU, (reg >> 8) & 0xff);
             MDS_SEND_BYTE(pModbus_RTU, (reg) & 0xff);
@@ -555,7 +544,7 @@ uint8 MDS_RTU_WriteDataProcess(PModbusS_RTU pModbus_RTU, uint16 reg, uint16 regN
         if (res) {
             MD_RTU_SEND_MODE(pModbus_RTU);
             MDS_START_SEND(pModbus_RTU);
-            MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->salveAddr);
+            MDS_SEND_BYTE(pModbus_RTU, pModbus_RTU->slaveAddr);
             MDS_SEND_BYTE(pModbus_RTU, funCode);
             MDS_SEND_BYTE(pModbus_RTU, (reg >> 8) & 0xff);
             MDS_SEND_BYTE(pModbus_RTU, (reg) & 0xff);

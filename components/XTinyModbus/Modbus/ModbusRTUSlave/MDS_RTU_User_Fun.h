@@ -1,13 +1,13 @@
 /********************************************************************************
- * @File name: MD_RTU_User_Fun.h
+ * @File name: MDS_RTU_User_Fun.h
  * @Author: zspace
  * @Version: 1.0
  * @Date: 2020-4-10
  * @Description: Modbus RTU host user calling function
  ********************************************************************************/
 
-#ifndef _MD_RTU_USER_FUN_H__
-#define _MD_RTU_USER_FUN_H__
+#ifndef _MDS_RTU_USER_FUN_H__
+#define _MDS_RTU_USER_FUN_H__
 
 /*********************************HEAD FILE************************************/
 #include "MD_RTU_Type.h"

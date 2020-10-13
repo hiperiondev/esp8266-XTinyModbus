@@ -1,13 +1,13 @@
 /********************************************************************************
- * @File name: MD_RTU_Fun.h
+ * @File name: MDS_RTU_Fun.h
  * @Author: zspace
  * @Version: 1.0
  * @Date: 2020-4-10
  * @Description: MModbus RTU Slave receiving function module.
  ********************************************************************************/
 
-#ifndef _MD_RTU_FUN_H__
-#define _MD_RTU_FUN_H__
+#ifndef _MDS_RTU_FUN_H__
+#define _MDS_RTU_FUN_H__
 /*********************************HEAD FILE************************************/
 #include "MD_RTU_Queue.h"
 #include "MD_RTU_MapTable.h"
@@ -24,7 +24,7 @@ typedef struct {
     MDSWriteFunciton mdsWriteFun;                        // Slave write callback function
     MDSqQueue mdSqQueue;                                 // Data receiving queue
     MDSqQueue mdMsgSqQueue;                              // Message processing queue
-    uint8 salveAddr;                                     // Slave address
+    uint8 slaveAddr;                                     // Slave address
     uint8 serialReadCache[MDS_RTU_CMD_SIZE];             // Single instruction read queue
     uint16 serialReadCount;                              // Instruction length
 #if MDS_USE_SEND_CACHE

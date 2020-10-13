@@ -13,7 +13,6 @@
 /*********************************END******************************************/
 
 /*******************************************************
- *
  * Function name: MDInitQueue
  * Description: Initialize a queue
  * Parameter:
@@ -32,7 +31,6 @@ uint8 MDInitQueue(MDSqQueue *q) {
 }
 
 /*******************************************************
- *
  * Function name: MDQueueLength
  * Description:Get the length of the data in the queue
  * Parameter:
@@ -47,7 +45,6 @@ uint16 MDQueueLength(MDSqQueue *q) {
 }
 
 /*******************************************************
- *
  * Function name: MDResetQueue
  * Description: Queue reset (cleared)
  * Parameter:
@@ -62,7 +59,6 @@ void MDResetQueue(MDSqQueue *q) {
 }
 
 /*******************************************************
- *
  * Function name: MDQueueEmpty
  * Description: Whether the queue is empty
  * Parameter:
@@ -77,7 +73,6 @@ uint8 MDQueueEmpty(MDSqQueue *q) {
 }
 
 /*******************************************************
- *
  * Function name: MDenQueue
  * Description: Insert at the end of the queue
  * Parameter:
@@ -95,7 +90,6 @@ uint8 MDenQueue(MDSqQueue *q, MDQueueDateType e) {
 }
 
 /*******************************************************
- *
  * Function name: MDenQueueH
  * Description: Queue head insertion
  * Parameter         :
@@ -113,7 +107,6 @@ uint8 MDenQueueH(MDSqQueue *q, MDQueueDateType e) {
 }
 
 /*******************************************************
- *
  * Function name: MDdeQueue
  * Description: Queue head out of the queue
  * Parameter:
@@ -131,7 +124,6 @@ uint8 MDdeQueue(MDSqQueue *q, MDQueueDateType *e) {
 }
 
 /*******************************************************
- *
  * Function name: MDdeQueueF
  * Description: Queue tail out
  * Parameter:
@@ -149,7 +141,6 @@ uint8 MDdeQueueF(MDSqQueue *q, MDQueueDateType *e) {
 }
 
 /*******************************************************
- *
  * Function name: MDgetTailQueue
  * Description: Get the element at the end of the queue without affecting the queue, only the element
  * Parameter:

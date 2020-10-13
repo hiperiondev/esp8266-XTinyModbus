@@ -1,5 +1,5 @@
 /********************************************************************************
- * @File name: MD_RTU_User_Fun.h
+ * @File name: MDM_RTU_User_Fun.h
  * @Author: zspace
  * @Email: 1358745329@qq.com
  * @Version: 1.0

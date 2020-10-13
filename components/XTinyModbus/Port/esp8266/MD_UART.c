@@ -19,6 +19,8 @@
 #define BUF_SIZE (1024)
 #define RD_BUF_SIZE (BUF_SIZE)
 
+bool SerialSW;
+
 // UART interrupt subroutine
 static void IRAM_ATTR uart_intr_handle(void *arg) {
     _SerialRecvByte = arg;

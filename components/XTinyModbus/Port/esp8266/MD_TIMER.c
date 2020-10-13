@@ -12,8 +12,8 @@
 #include "esp_log.h"
 #include "driver/hw_timer.h"
 
-void md_timer_init(void (* _MDTimeHandler100US)(void *arg)){
-    hw_timer_init(_MDTimeHandler100US, NULL);
-    hw_timer_alarm_us(100, true);
+void md_timer_init(uint32_t uS, void (* _TimeHandler)(void *arg), bool reload){
+    hw_timer_init(_TimeHandler, NULL);
+    hw_timer_alarm_us(uS, reload);
 }
 

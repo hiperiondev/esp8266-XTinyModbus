@@ -1,5 +1,5 @@
 /********************************************************************************
- * @File name: MD_RTU_RegCoil.c
+ * @File name: MD_RTU_MapTable.c
  * @Author: zspace
  * @Email: 1358745329@qq.com
  * @Version: 1.0
@@ -13,7 +13,6 @@
 /*********************************END******************************************/
 
 /*******************************************************
- *
  * Function name :RegCoilListAdd
  * Description :Add a mapping to master or slave
  * Parameter :
@@ -37,7 +36,6 @@ uint8 MapTableAdd(void *obj, PMapTableItem pMapTableItem, uint16 tabSize) {
 }
 
 /*******************************************************
- *
  * Function name: RegCoilListDel
  * Description: Delete a mapping to master or slave
  * Parameter:
